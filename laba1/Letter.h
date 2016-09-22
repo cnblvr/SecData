@@ -10,6 +10,8 @@ namespace laba1
 		property Char ch;
 		property int quantity;
 		property double frequency;
+		property Char replacement;
+		property array<Char> ^maybe;
 	public:
 		Letter(Char c_);
 	};

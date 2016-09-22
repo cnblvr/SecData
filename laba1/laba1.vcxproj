@@ -135,6 +135,7 @@
     <ClCompile Include="Letter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="RussianKeyboard.cpp" />
     <ClCompile Include="RussianStatistical.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RussianKeyboard.h" />
     <ClInclude Include="RussianStatistical.h" />
   </ItemGroup>
   <ItemGroup>

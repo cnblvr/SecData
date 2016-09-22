@@ -30,6 +30,9 @@
     <ClCompile Include="RussianStatistical.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="RussianKeyboard.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -42,6 +45,9 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="RussianStatistical.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="RussianKeyboard.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
