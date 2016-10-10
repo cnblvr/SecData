@@ -41,6 +41,7 @@ namespace laba3 {
 	private: System::Windows::Forms::RichTextBox^  richTextBox2;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::RichTextBox^  richTextBox3;
+	private: System::Windows::Forms::Button^  button2;
 
 	private:
 		/// <summary>
@@ -59,6 +60,7 @@ namespace laba3 {
 			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// richTextBox1
@@ -73,6 +75,7 @@ namespace laba3 {
 			// 
 			this->richTextBox2->Location = System::Drawing::Point(12, 141);
 			this->richTextBox2->Name = L"richTextBox2";
+			this->richTextBox2->ReadOnly = true;
 			this->richTextBox2->Size = System::Drawing::Size(318, 123);
 			this->richTextBox2->TabIndex = 1;
 			this->richTextBox2->Text = L"";
@@ -83,7 +86,7 @@ namespace laba3 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 2;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"encrypt";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
@@ -95,11 +98,22 @@ namespace laba3 {
 			this->richTextBox3->TabIndex = 3;
 			this->richTextBox3->Text = L"";
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(336, 141);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->TabIndex = 4;
+			this->button2->Text = L"decrypt";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(512, 432);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->richTextBox3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->richTextBox2);
@@ -112,7 +126,11 @@ namespace laba3 {
 		}
 #pragma endregion
 		DESCipher ^cipher;
+		array<Byte> ^buff;
 		private: System::Void MainForm_Shown(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e);
-	};
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	richTextBox3->Text = Encoding::Default->GetString(cipher->Decrypt(buff));
+	}
+};
 }
