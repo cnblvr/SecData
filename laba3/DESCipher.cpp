@@ -10,8 +10,8 @@ DESCipher::DESCipher()
 }
 array<Byte>^ DESCipher::Encrypt(array<Byte> ^data)
 {
-	MemoryStream ^fin = gcnew MemoryStream(data, false); // поток исходного текста
-	MemoryStream ^fout = gcnew MemoryStream(); // поток зашифрованного текста
+	MemoryStream ^fin = gcnew MemoryStream(data, false);
+	MemoryStream ^fout = gcnew MemoryStream();
 	CryptoStream ^encStream = gcnew CryptoStream(fout, des->CreateEncryptor(des->Key, des->IV), CryptoStreamMode::Write);
 	encStream->Write(data, 0, fin->Length);
 	encStream->FlushFinalBlock();
