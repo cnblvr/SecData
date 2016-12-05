@@ -1,6 +1,7 @@
 #pragma once
 #include "DESCipher.h"
 #include "ConvertF.h"
+#include "Settings.h"
 
 namespace laba3 {
 
@@ -38,33 +39,85 @@ namespace laba3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::GroupBox^  gbTask1;
-	private: System::Windows::Forms::TextBox^  tbSource;
+
+
 	protected:
 
-	private: System::Windows::Forms::TextBox^  tbDecrypted;
-	private: System::Windows::Forms::Button^  bEncryptString;
-
-	private: System::Windows::Forms::TextBox^  tbEncrypted;
-	private: System::Windows::Forms::Button^  bDecryptString;
-
-	private: System::Windows::Forms::GroupBox^  gbTask2;
-	private: System::Windows::Forms::PictureBox^  pbDecrypted;
-
-	private: System::Windows::Forms::PictureBox^  pbEncrypted;
-	private: System::Windows::Forms::PictureBox^  pbSource;
 
 
-	private: System::Windows::Forms::Button^  bEncryptImage;
-	private: System::Windows::Forms::Button^  bDecryptImage;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 	private: System::Windows::Forms::OpenFileDialog^  ofgOpenImage;
-	private: System::Windows::Forms::SplitContainer^  splitContainer2;
-	private: System::Windows::Forms::SplitContainer^  splitContainer3;
-	private: System::Windows::Forms::SplitContainer^  splitContainer1;
+	private: System::Windows::Forms::TabControl^  tcTasks;
+	private: System::Windows::Forms::TabPage^  tpTask1;
+	private: System::Windows::Forms::SplitContainer^  sc1_1;
+	private: System::Windows::Forms::SplitContainer^  sc1_a1;
+
+
+	private: System::Windows::Forms::SplitContainer^  sc1_2;
+	private: System::Windows::Forms::SplitContainer^  sc1_a2;
+
+
+	private: System::Windows::Forms::SplitContainer^  sc1_a3;
+
+
+	private: System::Windows::Forms::TabPage^  tpTask2;
+	private: System::Windows::Forms::TabPage^  tpTask3;
+	private: System::Windows::Forms::TextBox^  tbMain;
+	private: System::Windows::Forms::TextBox^  tbMainBytes;
+
+	private: System::Windows::Forms::TextBox^  tbEncrypted;
+	private: System::Windows::Forms::TextBox^  tbEncryptedBytes;
+
+	private: System::Windows::Forms::TextBox^  tbDecrypted;
+	private: System::Windows::Forms::TextBox^  tbDecryptedBytes;
+
+
+
+
+	private: System::Windows::Forms::SplitContainer^  sc2_1;
+	private: System::Windows::Forms::PictureBox^  pbMain;
+	private: System::Windows::Forms::SplitContainer^  sc2_2;
+	private: System::Windows::Forms::PictureBox^  pbEncrypted;
+
+	private: System::Windows::Forms::PictureBox^  pbDecrypted;
+	private: System::Windows::Forms::Label^  lDESIV;
+
+	private: System::Windows::Forms::TextBox^  tbDESIV;
+	private: System::Windows::Forms::Label^  lDESKey;
+
+
+	private: System::Windows::Forms::TextBox^  tbDESKey;
+	private: System::Windows::Forms::Button^  bGenerate;
+	private: System::Windows::Forms::Button^  bEncrypted2Decrypted;
+	private: System::Windows::Forms::Button^  bSource2Encrypted;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	protected:
 
@@ -92,169 +145,70 @@ namespace laba3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->gbTask1 = (gcnew System::Windows::Forms::GroupBox());
-			this->tbSource = (gcnew System::Windows::Forms::TextBox());
-			this->tbDecrypted = (gcnew System::Windows::Forms::TextBox());
-			this->bEncryptString = (gcnew System::Windows::Forms::Button());
-			this->tbEncrypted = (gcnew System::Windows::Forms::TextBox());
-			this->bDecryptString = (gcnew System::Windows::Forms::Button());
-			this->gbTask2 = (gcnew System::Windows::Forms::GroupBox());
-			this->pbDecrypted = (gcnew System::Windows::Forms::PictureBox());
-			this->pbEncrypted = (gcnew System::Windows::Forms::PictureBox());
-			this->pbSource = (gcnew System::Windows::Forms::PictureBox());
-			this->bEncryptImage = (gcnew System::Windows::Forms::Button());
-			this->bDecryptImage = (gcnew System::Windows::Forms::Button());
 			this->ofgOpenImage = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
-			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
-			this->gbTask1->SuspendLayout();
-			this->gbTask2->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbDecrypted))->BeginInit();
+			this->tcTasks = (gcnew System::Windows::Forms::TabControl());
+			this->tpTask1 = (gcnew System::Windows::Forms::TabPage());
+			this->sc1_1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->sc1_a1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->tbMain = (gcnew System::Windows::Forms::TextBox());
+			this->tbMainBytes = (gcnew System::Windows::Forms::TextBox());
+			this->sc1_2 = (gcnew System::Windows::Forms::SplitContainer());
+			this->sc1_a2 = (gcnew System::Windows::Forms::SplitContainer());
+			this->tbEncrypted = (gcnew System::Windows::Forms::TextBox());
+			this->tbEncryptedBytes = (gcnew System::Windows::Forms::TextBox());
+			this->sc1_a3 = (gcnew System::Windows::Forms::SplitContainer());
+			this->tbDecrypted = (gcnew System::Windows::Forms::TextBox());
+			this->tbDecryptedBytes = (gcnew System::Windows::Forms::TextBox());
+			this->tpTask2 = (gcnew System::Windows::Forms::TabPage());
+			this->sc2_1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->pbMain = (gcnew System::Windows::Forms::PictureBox());
+			this->sc2_2 = (gcnew System::Windows::Forms::SplitContainer());
+			this->pbEncrypted = (gcnew System::Windows::Forms::PictureBox());
+			this->pbDecrypted = (gcnew System::Windows::Forms::PictureBox());
+			this->tpTask3 = (gcnew System::Windows::Forms::TabPage());
+			this->bGenerate = (gcnew System::Windows::Forms::Button());
+			this->lDESIV = (gcnew System::Windows::Forms::Label());
+			this->tbDESIV = (gcnew System::Windows::Forms::TextBox());
+			this->lDESKey = (gcnew System::Windows::Forms::Label());
+			this->tbDESKey = (gcnew System::Windows::Forms::TextBox());
+			this->bSource2Encrypted = (gcnew System::Windows::Forms::Button());
+			this->bEncrypted2Decrypted = (gcnew System::Windows::Forms::Button());
+			this->tcTasks->SuspendLayout();
+			this->tpTask1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_1))->BeginInit();
+			this->sc1_1->Panel1->SuspendLayout();
+			this->sc1_1->Panel2->SuspendLayout();
+			this->sc1_1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a1))->BeginInit();
+			this->sc1_a1->Panel1->SuspendLayout();
+			this->sc1_a1->Panel2->SuspendLayout();
+			this->sc1_a1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_2))->BeginInit();
+			this->sc1_2->Panel1->SuspendLayout();
+			this->sc1_2->Panel2->SuspendLayout();
+			this->sc1_2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a2))->BeginInit();
+			this->sc1_a2->Panel1->SuspendLayout();
+			this->sc1_a2->Panel2->SuspendLayout();
+			this->sc1_a2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a3))->BeginInit();
+			this->sc1_a3->Panel1->SuspendLayout();
+			this->sc1_a3->Panel2->SuspendLayout();
+			this->sc1_a3->SuspendLayout();
+			this->tpTask2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc2_1))->BeginInit();
+			this->sc2_1->Panel1->SuspendLayout();
+			this->sc2_1->Panel2->SuspendLayout();
+			this->sc2_1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbMain))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc2_2))->BeginInit();
+			this->sc2_2->Panel1->SuspendLayout();
+			this->sc2_2->Panel2->SuspendLayout();
+			this->sc2_2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbEncrypted))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSource))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
-			this->splitContainer1->Panel1->SuspendLayout();
-			this->splitContainer1->Panel2->SuspendLayout();
-			this->splitContainer1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
-			this->splitContainer2->Panel1->SuspendLayout();
-			this->splitContainer2->Panel2->SuspendLayout();
-			this->splitContainer2->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer3))->BeginInit();
-			this->splitContainer3->Panel1->SuspendLayout();
-			this->splitContainer3->Panel2->SuspendLayout();
-			this->splitContainer3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbDecrypted))->BeginInit();
+			this->tpTask3->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// gbTask1
-			// 
-			this->gbTask1->Controls->Add(this->splitContainer2);
-			this->gbTask1->Location = System::Drawing::Point(3, 3);
-			this->gbTask1->Name = L"gbTask1";
-			this->gbTask1->Size = System::Drawing::Size(300, 350);
-			this->gbTask1->TabIndex = 8;
-			this->gbTask1->TabStop = false;
-			this->gbTask1->Text = L"Задание 1";
-			// 
-			// tbSource
-			// 
-			this->tbSource->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->tbSource->Location = System::Drawing::Point(3, 3);
-			this->tbSource->Multiline = true;
-			this->tbSource->Name = L"tbSource";
-			this->tbSource->Size = System::Drawing::Size(208, 104);
-			this->tbSource->TabIndex = 5;
-			// 
-			// tbDecrypted
-			// 
-			this->tbDecrypted->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->tbDecrypted->Location = System::Drawing::Point(3, 3);
-			this->tbDecrypted->Multiline = true;
-			this->tbDecrypted->Name = L"tbDecrypted";
-			this->tbDecrypted->ReadOnly = true;
-			this->tbDecrypted->Size = System::Drawing::Size(208, 102);
-			this->tbDecrypted->TabIndex = 7;
-			// 
-			// bEncryptString
-			// 
-			this->bEncryptString->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->bEncryptString->Location = System::Drawing::Point(216, 3);
-			this->bEncryptString->Name = L"bEncryptString";
-			this->bEncryptString->Size = System::Drawing::Size(75, 23);
-			this->bEncryptString->TabIndex = 2;
-			this->bEncryptString->Text = L"encrypt";
-			this->bEncryptString->UseVisualStyleBackColor = true;
-			this->bEncryptString->Click += gcnew System::EventHandler(this, &MainForm::bEncryptString_Click);
-			// 
-			// tbEncrypted
-			// 
-			this->tbEncrypted->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->tbEncrypted->Location = System::Drawing::Point(3, 5);
-			this->tbEncrypted->Multiline = true;
-			this->tbEncrypted->Name = L"tbEncrypted";
-			this->tbEncrypted->ReadOnly = true;
-			this->tbEncrypted->Size = System::Drawing::Size(208, 102);
-			this->tbEncrypted->TabIndex = 6;
-			// 
-			// bDecryptString
-			// 
-			this->bDecryptString->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->bDecryptString->Location = System::Drawing::Point(216, 5);
-			this->bDecryptString->Name = L"bDecryptString";
-			this->bDecryptString->Size = System::Drawing::Size(75, 23);
-			this->bDecryptString->TabIndex = 4;
-			this->bDecryptString->Text = L"decrypt";
-			this->bDecryptString->UseVisualStyleBackColor = true;
-			this->bDecryptString->Click += gcnew System::EventHandler(this, &MainForm::bDecryptString_Click);
-			// 
-			// gbTask2
-			// 
-			this->gbTask2->Controls->Add(this->pbDecrypted);
-			this->gbTask2->Controls->Add(this->pbEncrypted);
-			this->gbTask2->Controls->Add(this->pbSource);
-			this->gbTask2->Controls->Add(this->bEncryptImage);
-			this->gbTask2->Controls->Add(this->bDecryptImage);
-			this->gbTask2->Location = System::Drawing::Point(94, 153);
-			this->gbTask2->Name = L"gbTask2";
-			this->gbTask2->Size = System::Drawing::Size(298, 344);
-			this->gbTask2->TabIndex = 9;
-			this->gbTask2->TabStop = false;
-			this->gbTask2->Text = L"Задание 2";
-			// 
-			// pbDecrypted
-			// 
-			this->pbDecrypted->Location = System::Drawing::Point(6, 231);
-			this->pbDecrypted->Name = L"pbDecrypted";
-			this->pbDecrypted->Size = System::Drawing::Size(200, 100);
-			this->pbDecrypted->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbDecrypted->TabIndex = 12;
-			this->pbDecrypted->TabStop = false;
-			// 
-			// pbEncrypted
-			// 
-			this->pbEncrypted->Location = System::Drawing::Point(6, 125);
-			this->pbEncrypted->Name = L"pbEncrypted";
-			this->pbEncrypted->Size = System::Drawing::Size(200, 100);
-			this->pbEncrypted->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbEncrypted->TabIndex = 11;
-			this->pbEncrypted->TabStop = false;
-			// 
-			// pbSource
-			// 
-			this->pbSource->Location = System::Drawing::Point(6, 19);
-			this->pbSource->Name = L"pbSource";
-			this->pbSource->Size = System::Drawing::Size(200, 100);
-			this->pbSource->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbSource->TabIndex = 10;
-			this->pbSource->TabStop = false;
-			this->pbSource->Click += gcnew System::EventHandler(this, &MainForm::pbSource_Click);
-			// 
-			// bEncryptImage
-			// 
-			this->bEncryptImage->Location = System::Drawing::Point(212, 19);
-			this->bEncryptImage->Name = L"bEncryptImage";
-			this->bEncryptImage->Size = System::Drawing::Size(75, 23);
-			this->bEncryptImage->TabIndex = 2;
-			this->bEncryptImage->Text = L"encrypt";
-			this->bEncryptImage->UseVisualStyleBackColor = true;
-			this->bEncryptImage->Click += gcnew System::EventHandler(this, &MainForm::bEncryptImage_Click);
-			// 
-			// bDecryptImage
-			// 
-			this->bDecryptImage->Location = System::Drawing::Point(212, 125);
-			this->bDecryptImage->Name = L"bDecryptImage";
-			this->bDecryptImage->Size = System::Drawing::Size(75, 23);
-			this->bDecryptImage->TabIndex = 4;
-			this->bDecryptImage->Text = L"decrypt";
-			this->bDecryptImage->UseVisualStyleBackColor = true;
-			this->bDecryptImage->Click += gcnew System::EventHandler(this, &MainForm::bDecryptImage_Click);
 			// 
 			// ofgOpenImage
 			// 
@@ -262,104 +216,428 @@ namespace laba3 {
 			this->ofgOpenImage->Filter = L"Images|*.png;*.jpg;*bmp";
 			this->ofgOpenImage->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &MainForm::ofgOpenImage_FileOk);
 			// 
-			// splitContainer1
+			// tcTasks
 			// 
-			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer1->Location = System::Drawing::Point(0, 0);
-			this->splitContainer1->Name = L"splitContainer1";
+			this->tcTasks->Controls->Add(this->tpTask1);
+			this->tcTasks->Controls->Add(this->tpTask2);
+			this->tcTasks->Controls->Add(this->tpTask3);
+			this->tcTasks->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tcTasks->Location = System::Drawing::Point(0, 0);
+			this->tcTasks->Name = L"tcTasks";
+			this->tcTasks->SelectedIndex = 0;
+			this->tcTasks->Size = System::Drawing::Size(483, 488);
+			this->tcTasks->TabIndex = 11;
 			// 
-			// splitContainer1.Panel1
+			// tpTask1
 			// 
-			this->splitContainer1->Panel1->Controls->Add(this->gbTask1);
+			this->tpTask1->Controls->Add(this->sc1_1);
+			this->tpTask1->Location = System::Drawing::Point(4, 22);
+			this->tpTask1->Name = L"tpTask1";
+			this->tpTask1->Padding = System::Windows::Forms::Padding(3);
+			this->tpTask1->Size = System::Drawing::Size(475, 462);
+			this->tpTask1->TabIndex = 0;
+			this->tpTask1->Text = L"Задание 1";
+			this->tpTask1->UseVisualStyleBackColor = true;
 			// 
-			// splitContainer1.Panel2
+			// sc1_1
 			// 
-			this->splitContainer1->Panel2->Controls->Add(this->gbTask2);
-			this->splitContainer1->Size = System::Drawing::Size(1117, 631);
-			this->splitContainer1->SplitterDistance = 558;
-			this->splitContainer1->TabIndex = 10;
+			this->sc1_1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc1_1->Location = System::Drawing::Point(3, 3);
+			this->sc1_1->Name = L"sc1_1";
+			this->sc1_1->Orientation = System::Windows::Forms::Orientation::Horizontal;
 			// 
-			// splitContainer2
+			// sc1_1.Panel1
 			// 
-			this->splitContainer2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer2->Location = System::Drawing::Point(3, 16);
-			this->splitContainer2->Name = L"splitContainer2";
-			this->splitContainer2->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			this->sc1_1->Panel1->Controls->Add(this->sc1_a1);
 			// 
-			// splitContainer2.Panel1
+			// sc1_1.Panel2
 			// 
-			this->splitContainer2->Panel1->Controls->Add(this->bEncryptString);
-			this->splitContainer2->Panel1->Controls->Add(this->tbSource);
+			this->sc1_1->Panel2->Controls->Add(this->sc1_2);
+			this->sc1_1->Size = System::Drawing::Size(469, 456);
+			this->sc1_1->SplitterDistance = 152;
+			this->sc1_1->TabIndex = 0;
 			// 
-			// splitContainer2.Panel2
+			// sc1_a1
 			// 
-			this->splitContainer2->Panel2->Controls->Add(this->splitContainer3);
-			this->splitContainer2->Size = System::Drawing::Size(294, 331);
-			this->splitContainer2->SplitterDistance = 110;
-			this->splitContainer2->TabIndex = 9;
+			this->sc1_a1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc1_a1->Location = System::Drawing::Point(0, 0);
+			this->sc1_a1->Name = L"sc1_a1";
 			// 
-			// splitContainer3
+			// sc1_a1.Panel1
 			// 
-			this->splitContainer3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer3->Location = System::Drawing::Point(0, 0);
-			this->splitContainer3->Name = L"splitContainer3";
-			this->splitContainer3->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			this->sc1_a1->Panel1->Controls->Add(this->tbMain);
 			// 
-			// splitContainer3.Panel1
+			// sc1_a1.Panel2
 			// 
-			this->splitContainer3->Panel1->Controls->Add(this->bDecryptString);
-			this->splitContainer3->Panel1->Controls->Add(this->tbEncrypted);
+			this->sc1_a1->Panel2->Controls->Add(this->tbMainBytes);
+			this->sc1_a1->Size = System::Drawing::Size(469, 152);
+			this->sc1_a1->SplitterDistance = 234;
+			this->sc1_a1->TabIndex = 0;
 			// 
-			// splitContainer3.Panel2
+			// tbMain
 			// 
-			this->splitContainer3->Panel2->Controls->Add(this->tbDecrypted);
-			this->splitContainer3->Size = System::Drawing::Size(294, 217);
-			this->splitContainer3->SplitterDistance = 110;
-			this->splitContainer3->TabIndex = 10;
+			this->tbMain->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbMain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbMain->Location = System::Drawing::Point(0, 0);
+			this->tbMain->Multiline = true;
+			this->tbMain->Name = L"tbMain";
+			this->tbMain->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbMain->Size = System::Drawing::Size(234, 152);
+			this->tbMain->TabIndex = 0;
+			this->tbMain->TextChanged += gcnew System::EventHandler(this, &MainForm::tbMain_TextChanged);
+			// 
+			// tbMainBytes
+			// 
+			this->tbMainBytes->BackColor = System::Drawing::Color::Gainsboro;
+			this->tbMainBytes->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbMainBytes->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbMainBytes->Location = System::Drawing::Point(0, 0);
+			this->tbMainBytes->Multiline = true;
+			this->tbMainBytes->Name = L"tbMainBytes";
+			this->tbMainBytes->ReadOnly = true;
+			this->tbMainBytes->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbMainBytes->Size = System::Drawing::Size(231, 152);
+			this->tbMainBytes->TabIndex = 0;
+			// 
+			// sc1_2
+			// 
+			this->sc1_2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc1_2->Location = System::Drawing::Point(0, 0);
+			this->sc1_2->Name = L"sc1_2";
+			this->sc1_2->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			// 
+			// sc1_2.Panel1
+			// 
+			this->sc1_2->Panel1->Controls->Add(this->sc1_a2);
+			// 
+			// sc1_2.Panel2
+			// 
+			this->sc1_2->Panel2->Controls->Add(this->sc1_a3);
+			this->sc1_2->Size = System::Drawing::Size(469, 300);
+			this->sc1_2->SplitterDistance = 152;
+			this->sc1_2->TabIndex = 0;
+			// 
+			// sc1_a2
+			// 
+			this->sc1_a2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc1_a2->Location = System::Drawing::Point(0, 0);
+			this->sc1_a2->Name = L"sc1_a2";
+			// 
+			// sc1_a2.Panel1
+			// 
+			this->sc1_a2->Panel1->Controls->Add(this->tbEncrypted);
+			// 
+			// sc1_a2.Panel2
+			// 
+			this->sc1_a2->Panel2->Controls->Add(this->tbEncryptedBytes);
+			this->sc1_a2->Size = System::Drawing::Size(469, 152);
+			this->sc1_a2->SplitterDistance = 234;
+			this->sc1_a2->TabIndex = 0;
+			// 
+			// tbEncrypted
+			// 
+			this->tbEncrypted->BackColor = System::Drawing::Color::Gainsboro;
+			this->tbEncrypted->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbEncrypted->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbEncrypted->Location = System::Drawing::Point(0, 0);
+			this->tbEncrypted->Multiline = true;
+			this->tbEncrypted->Name = L"tbEncrypted";
+			this->tbEncrypted->ReadOnly = true;
+			this->tbEncrypted->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbEncrypted->Size = System::Drawing::Size(234, 152);
+			this->tbEncrypted->TabIndex = 0;
+			// 
+			// tbEncryptedBytes
+			// 
+			this->tbEncryptedBytes->BackColor = System::Drawing::Color::Gainsboro;
+			this->tbEncryptedBytes->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbEncryptedBytes->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbEncryptedBytes->Location = System::Drawing::Point(0, 0);
+			this->tbEncryptedBytes->Multiline = true;
+			this->tbEncryptedBytes->Name = L"tbEncryptedBytes";
+			this->tbEncryptedBytes->ReadOnly = true;
+			this->tbEncryptedBytes->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbEncryptedBytes->Size = System::Drawing::Size(231, 152);
+			this->tbEncryptedBytes->TabIndex = 0;
+			// 
+			// sc1_a3
+			// 
+			this->sc1_a3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc1_a3->Location = System::Drawing::Point(0, 0);
+			this->sc1_a3->Name = L"sc1_a3";
+			// 
+			// sc1_a3.Panel1
+			// 
+			this->sc1_a3->Panel1->Controls->Add(this->tbDecrypted);
+			// 
+			// sc1_a3.Panel2
+			// 
+			this->sc1_a3->Panel2->Controls->Add(this->tbDecryptedBytes);
+			this->sc1_a3->Size = System::Drawing::Size(469, 144);
+			this->sc1_a3->SplitterDistance = 234;
+			this->sc1_a3->TabIndex = 0;
+			// 
+			// tbDecrypted
+			// 
+			this->tbDecrypted->BackColor = System::Drawing::Color::Gainsboro;
+			this->tbDecrypted->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbDecrypted->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbDecrypted->Location = System::Drawing::Point(0, 0);
+			this->tbDecrypted->Multiline = true;
+			this->tbDecrypted->Name = L"tbDecrypted";
+			this->tbDecrypted->ReadOnly = true;
+			this->tbDecrypted->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbDecrypted->Size = System::Drawing::Size(234, 144);
+			this->tbDecrypted->TabIndex = 0;
+			// 
+			// tbDecryptedBytes
+			// 
+			this->tbDecryptedBytes->BackColor = System::Drawing::Color::Gainsboro;
+			this->tbDecryptedBytes->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tbDecryptedBytes->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->tbDecryptedBytes->Location = System::Drawing::Point(0, 0);
+			this->tbDecryptedBytes->Multiline = true;
+			this->tbDecryptedBytes->Name = L"tbDecryptedBytes";
+			this->tbDecryptedBytes->ReadOnly = true;
+			this->tbDecryptedBytes->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->tbDecryptedBytes->Size = System::Drawing::Size(231, 144);
+			this->tbDecryptedBytes->TabIndex = 0;
+			// 
+			// tpTask2
+			// 
+			this->tpTask2->Controls->Add(this->sc2_1);
+			this->tpTask2->Location = System::Drawing::Point(4, 22);
+			this->tpTask2->Name = L"tpTask2";
+			this->tpTask2->Padding = System::Windows::Forms::Padding(3);
+			this->tpTask2->Size = System::Drawing::Size(475, 462);
+			this->tpTask2->TabIndex = 1;
+			this->tpTask2->Text = L"Задание 2";
+			this->tpTask2->UseVisualStyleBackColor = true;
+			// 
+			// sc2_1
+			// 
+			this->sc2_1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc2_1->Location = System::Drawing::Point(3, 3);
+			this->sc2_1->Name = L"sc2_1";
+			this->sc2_1->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			// 
+			// sc2_1.Panel1
+			// 
+			this->sc2_1->Panel1->Controls->Add(this->pbMain);
+			// 
+			// sc2_1.Panel2
+			// 
+			this->sc2_1->Panel2->Controls->Add(this->sc2_2);
+			this->sc2_1->Size = System::Drawing::Size(469, 456);
+			this->sc2_1->SplitterDistance = 152;
+			this->sc2_1->TabIndex = 0;
+			// 
+			// pbMain
+			// 
+			this->pbMain->BackColor = System::Drawing::SystemColors::Control;
+			this->pbMain->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pbMain->Location = System::Drawing::Point(0, 0);
+			this->pbMain->Name = L"pbMain";
+			this->pbMain->Size = System::Drawing::Size(469, 152);
+			this->pbMain->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbMain->TabIndex = 0;
+			this->pbMain->TabStop = false;
+			this->pbMain->DoubleClick += gcnew System::EventHandler(this, &MainForm::pbMain_DoubleClick);
+			// 
+			// sc2_2
+			// 
+			this->sc2_2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->sc2_2->Location = System::Drawing::Point(0, 0);
+			this->sc2_2->Name = L"sc2_2";
+			this->sc2_2->Orientation = System::Windows::Forms::Orientation::Horizontal;
+			// 
+			// sc2_2.Panel1
+			// 
+			this->sc2_2->Panel1->Controls->Add(this->pbEncrypted);
+			// 
+			// sc2_2.Panel2
+			// 
+			this->sc2_2->Panel2->Controls->Add(this->pbDecrypted);
+			this->sc2_2->Size = System::Drawing::Size(469, 300);
+			this->sc2_2->SplitterDistance = 152;
+			this->sc2_2->TabIndex = 0;
+			// 
+			// pbEncrypted
+			// 
+			this->pbEncrypted->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pbEncrypted->Location = System::Drawing::Point(0, 0);
+			this->pbEncrypted->Name = L"pbEncrypted";
+			this->pbEncrypted->Size = System::Drawing::Size(469, 152);
+			this->pbEncrypted->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbEncrypted->TabIndex = 0;
+			this->pbEncrypted->TabStop = false;
+			// 
+			// pbDecrypted
+			// 
+			this->pbDecrypted->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pbDecrypted->Location = System::Drawing::Point(0, 0);
+			this->pbDecrypted->Name = L"pbDecrypted";
+			this->pbDecrypted->Size = System::Drawing::Size(469, 144);
+			this->pbDecrypted->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbDecrypted->TabIndex = 0;
+			this->pbDecrypted->TabStop = false;
+			// 
+			// tpTask3
+			// 
+			this->tpTask3->Controls->Add(this->bEncrypted2Decrypted);
+			this->tpTask3->Controls->Add(this->bSource2Encrypted);
+			this->tpTask3->Controls->Add(this->bGenerate);
+			this->tpTask3->Controls->Add(this->lDESIV);
+			this->tpTask3->Controls->Add(this->tbDESIV);
+			this->tpTask3->Controls->Add(this->lDESKey);
+			this->tpTask3->Controls->Add(this->tbDESKey);
+			this->tpTask3->Location = System::Drawing::Point(4, 22);
+			this->tpTask3->Name = L"tpTask3";
+			this->tpTask3->Size = System::Drawing::Size(475, 462);
+			this->tpTask3->TabIndex = 2;
+			this->tpTask3->Text = L"Задание 3";
+			this->tpTask3->UseVisualStyleBackColor = true;
+			// 
+			// bGenerate
+			// 
+			this->bGenerate->Location = System::Drawing::Point(8, 57);
+			this->bGenerate->Name = L"bGenerate";
+			this->bGenerate->Size = System::Drawing::Size(159, 23);
+			this->bGenerate->TabIndex = 4;
+			this->bGenerate->Text = L"Сгенерировать";
+			this->bGenerate->UseVisualStyleBackColor = true;
+			this->bGenerate->Click += gcnew System::EventHandler(this, &MainForm::bGenerate_Click);
+			// 
+			// lDESIV
+			// 
+			this->lDESIV->AutoSize = true;
+			this->lDESIV->Location = System::Drawing::Point(5, 34);
+			this->lDESIV->Name = L"lDESIV";
+			this->lDESIV->Size = System::Drawing::Size(124, 13);
+			this->lDESIV->TabIndex = 3;
+			this->lDESIV->Text = L"Вектор инициализации";
+			// 
+			// tbDESIV
+			// 
+			this->tbDESIV->Location = System::Drawing::Point(135, 31);
+			this->tbDESIV->Name = L"tbDESIV";
+			this->tbDESIV->Size = System::Drawing::Size(332, 20);
+			this->tbDESIV->TabIndex = 2;
+			// 
+			// lDESKey
+			// 
+			this->lDESKey->AutoSize = true;
+			this->lDESKey->Location = System::Drawing::Point(5, 8);
+			this->lDESKey->Name = L"lDESKey";
+			this->lDESKey->Size = System::Drawing::Size(91, 13);
+			this->lDESKey->TabIndex = 1;
+			this->lDESKey->Text = L"Секретный ключ";
+			// 
+			// tbDESKey
+			// 
+			this->tbDESKey->Location = System::Drawing::Point(135, 5);
+			this->tbDESKey->Name = L"tbDESKey";
+			this->tbDESKey->Size = System::Drawing::Size(332, 20);
+			this->tbDESKey->TabIndex = 0;
+			// 
+			// bSource2Encrypted
+			// 
+			this->bSource2Encrypted->Location = System::Drawing::Point(8, 124);
+			this->bSource2Encrypted->Name = L"bSource2Encrypted";
+			this->bSource2Encrypted->Size = System::Drawing::Size(278, 23);
+			this->bSource2Encrypted->TabIndex = 5;
+			this->bSource2Encrypted->Text = L"Шифровать source.png в encrypted.png";
+			this->bSource2Encrypted->UseVisualStyleBackColor = true;
+			this->bSource2Encrypted->Click += gcnew System::EventHandler(this, &MainForm::bSource2Encrypted_Click);
+			// 
+			// bEncrypted2Decrypted
+			// 
+			this->bEncrypted2Decrypted->Location = System::Drawing::Point(8, 153);
+			this->bEncrypted2Decrypted->Name = L"bEncrypted2Decrypted";
+			this->bEncrypted2Decrypted->Size = System::Drawing::Size(278, 23);
+			this->bEncrypted2Decrypted->TabIndex = 6;
+			this->bEncrypted2Decrypted->Text = L"Расшифровать encrypted.png в decrypted.png";
+			this->bEncrypted2Decrypted->UseVisualStyleBackColor = true;
+			this->bEncrypted2Decrypted->Click += gcnew System::EventHandler(this, &MainForm::bEncrypted2Decrypted_Click);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1117, 631);
-			this->Controls->Add(this->splitContainer1);
+			this->ClientSize = System::Drawing::Size(483, 488);
+			this->Controls->Add(this->tcTasks);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
 			this->Shown += gcnew System::EventHandler(this, &MainForm::MainForm_Shown);
-			this->gbTask1->ResumeLayout(false);
-			this->gbTask2->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbDecrypted))->EndInit();
+			this->tcTasks->ResumeLayout(false);
+			this->tpTask1->ResumeLayout(false);
+			this->sc1_1->Panel1->ResumeLayout(false);
+			this->sc1_1->Panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_1))->EndInit();
+			this->sc1_1->ResumeLayout(false);
+			this->sc1_a1->Panel1->ResumeLayout(false);
+			this->sc1_a1->Panel1->PerformLayout();
+			this->sc1_a1->Panel2->ResumeLayout(false);
+			this->sc1_a1->Panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a1))->EndInit();
+			this->sc1_a1->ResumeLayout(false);
+			this->sc1_2->Panel1->ResumeLayout(false);
+			this->sc1_2->Panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_2))->EndInit();
+			this->sc1_2->ResumeLayout(false);
+			this->sc1_a2->Panel1->ResumeLayout(false);
+			this->sc1_a2->Panel1->PerformLayout();
+			this->sc1_a2->Panel2->ResumeLayout(false);
+			this->sc1_a2->Panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a2))->EndInit();
+			this->sc1_a2->ResumeLayout(false);
+			this->sc1_a3->Panel1->ResumeLayout(false);
+			this->sc1_a3->Panel1->PerformLayout();
+			this->sc1_a3->Panel2->ResumeLayout(false);
+			this->sc1_a3->Panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc1_a3))->EndInit();
+			this->sc1_a3->ResumeLayout(false);
+			this->tpTask2->ResumeLayout(false);
+			this->sc2_1->Panel1->ResumeLayout(false);
+			this->sc2_1->Panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc2_1))->EndInit();
+			this->sc2_1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbMain))->EndInit();
+			this->sc2_2->Panel1->ResumeLayout(false);
+			this->sc2_2->Panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->sc2_2))->EndInit();
+			this->sc2_2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbEncrypted))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSource))->EndInit();
-			this->splitContainer1->Panel1->ResumeLayout(false);
-			this->splitContainer1->Panel2->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
-			this->splitContainer1->ResumeLayout(false);
-			this->splitContainer2->Panel1->ResumeLayout(false);
-			this->splitContainer2->Panel1->PerformLayout();
-			this->splitContainer2->Panel2->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
-			this->splitContainer2->ResumeLayout(false);
-			this->splitContainer3->Panel1->ResumeLayout(false);
-			this->splitContainer3->Panel1->PerformLayout();
-			this->splitContainer3->Panel2->ResumeLayout(false);
-			this->splitContainer3->Panel2->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer3))->EndInit();
-			this->splitContainer3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbDecrypted))->EndInit();
+			this->tpTask3->ResumeLayout(false);
+			this->tpTask3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	DESCipher ^cipher;
-	array<Byte> ^stringBuff;
-	array<Byte> ^imageBuff;
+	array<Byte> ^DESKey;
+	array<Byte> ^DESIV;
 	System::Void MainForm_Shown(System::Object^  sender, System::EventArgs^  e);
-	System::Void bEncryptString_Click(System::Object^  sender, System::EventArgs^  e);
-	System::Void bDecryptString_Click(System::Object^  sender, System::EventArgs^  e);
-	System::Void pbSource_Click(System::Object^  sender, System::EventArgs^  e);
+	//System::Void bEncryptString_Click(System::Object^  sender, System::EventArgs^  e);
+	//System::Void bDecryptString_Click(System::Object^  sender, System::EventArgs^  e);
+	//System::Void pbSource_Click(System::Object^  sender, System::EventArgs^  e);
+	//System::Void bEncryptImage_Click(System::Object^  sender, System::EventArgs^  e);
+	//System::Void bDecryptImage_Click(System::Object^  sender, System::EventArgs^  e);
+	System::Void tbMain_TextChanged(System::Object^  sender, System::EventArgs^  e);
+	System::Void pbMain_DoubleClick(System::Object^  sender, System::EventArgs^  e);
 	System::Void ofgOpenImage_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e);
-	System::Void bEncryptImage_Click(System::Object^  sender, System::EventArgs^  e);
-	System::Void bDecryptImage_Click(System::Object^  sender, System::EventArgs^  e);
+	System::Void bGenerate_Click(System::Object^  sender, System::EventArgs^  e);
+	void Print();
+	void Save();
+	System::Void bSource2Encrypted_Click(System::Object^  sender, System::EventArgs^  e);
+	System::Void bEncrypted2Decrypted_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

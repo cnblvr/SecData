@@ -1,10 +1,29 @@
 #include "DESCipher.h"
 
-DESCipher::DESCipher()
+DESCipher::DESCipher(array<Byte> ^key, array<Byte> ^iv)
 {
 	des = gcnew DESCryptoServiceProvider;
 	des->Mode = CipherMode::CBC;
 	des->Padding = PaddingMode::Zeros;
+	if(key == nullptr)
+		des->GenerateKey();
+	else
+		des->Key = key;
+	if(iv == nullptr)
+		des->GenerateIV();
+	else
+		des->IV = iv;
+}
+array<Byte>^ DESCipher::GetKey()
+{
+	return des->Key;
+}
+array<Byte>^ DESCipher::GetIV()
+{
+	return des->IV;
+}
+void DESCipher::Generate()
+{
 	des->GenerateKey();
 	des->GenerateIV();
 }

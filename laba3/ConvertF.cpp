@@ -2,11 +2,11 @@
 
 array<Byte>^ ConvertF::StringToBytes(String ^string)
 {
-	return Encoding::Default->GetBytes(string);
+	return Encoding::Unicode->GetBytes(string);
 }
 String^ ConvertF::BytesToString(array<Byte> ^bytes)
 {
-	return Encoding::Default->GetString(bytes);
+	return Encoding::Unicode->GetString(bytes);
 }
 array<Byte>^ ConvertF::BitmapToBytes(Bitmap ^bitmap)
 {
