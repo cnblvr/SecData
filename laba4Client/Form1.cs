@@ -12,28 +12,15 @@ namespace laba4Client
 {
     public partial class Form1 : Form
     {
-        byte[] DESKey;
-        byte[] DESIV;
+		private Cipher cipher;
         public Form1()
         {
             InitializeComponent();
-            Dictionary<string, string> settings;
-            try
-            {
-                settings = Settings.ReadFile("settings.set");
-            }
-            catch(Exception e) { MessageBox.Show(e.Message); Environment.Exit(1); return; }
-            DESKey = Convert.FromBase64String(settings["des_key"]);
-            DESIV = Convert.FromBase64String(settings["des_iv"]);
-            if (DESKey.Length != 8 || DESIV.Length != 8)
-            {
-                MessageBox.Show("Секретный ключ или вектор инициализации должны быть длиной 8.");
-                Environment.Exit(1); return;
-            }
+			cipher = new DESCipher(Convert.FromBase64String("YCjdx4YFSJ8="), Convert.FromBase64String("qQYwcSmXwjY="));
         }
         private void send()
         {
-            MessageBox.Show(tbMessage.Text);
+			Messenger.Send(cipher.Encrypt(Encoding.Unicode.GetBytes(tbMessage.Text)), 1, "192.168.31.167", 45664);
             tbMessage.Focus();
         }
         private void bSend_Click(object sender, EventArgs e)

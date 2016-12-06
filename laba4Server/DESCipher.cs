@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba4Client
+namespace laba4Server
 {
     class DESCipher : Cipher
     {

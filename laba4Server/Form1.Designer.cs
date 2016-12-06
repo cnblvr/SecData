@@ -28,12 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+			this.rtbMain = new System.Windows.Forms.RichTextBox();
+			this.SuspendLayout();
+			// 
+			// rtbMain
+			// 
+			this.rtbMain.BackColor = System.Drawing.Color.Gainsboro;
+			this.rtbMain.DetectUrls = false;
+			this.rtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.rtbMain.HideSelection = false;
+			this.rtbMain.Location = new System.Drawing.Point(0, 0);
+			this.rtbMain.Name = "rtbMain";
+			this.rtbMain.ReadOnly = true;
+			this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+			this.rtbMain.Size = new System.Drawing.Size(292, 273);
+			this.rtbMain.TabIndex = 0;
+			this.rtbMain.Text = "";
+			this.rtbMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtbMain_KeyPress);
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.rtbMain);
+			this.Name = "Form1";
+			this.Text = "Server";
+			this.ResumeLayout(false);
+
         }
 
-        #endregion
-    }
+		#endregion
+
+		private System.Windows.Forms.RichTextBox rtbMain;
+	}
 }
 
