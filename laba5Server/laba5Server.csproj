@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C95D1F8C-BABD-4726-AF86-3E29F750C2A7}</ProjectGuid>
+    <ProjectGuid>{09228E94-19DE-4ECB-93AE-A0FC8BBCE10D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>laba4Client</RootNamespace>
-    <AssemblyName>laba4Client</AssemblyName>
+    <RootNamespace>laba5Server</RootNamespace>
+    <AssemblyName>laba5Server</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

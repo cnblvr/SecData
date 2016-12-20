@@ -59,11 +59,22 @@ namespace laba4Server
 			if(bytes != null)
 			{
 				string message = null;
+				Cipher cipher = null;
+				if(bytes[0] == 1)
+					cipher = new DESCipher(Convert.FromBase64String("YCjdx4YFSJ8="), Convert.FromBase64String("qQYwcSmXwjY="));
+				else if(bytes[0] == 2)
+					cipher=new TripleDESCipher(Convert.FromBase64String("geuSSrBfkjxZbkVm+jFcCGQ+DcW6LwX/"),
+							Convert.FromBase64String("jh1zV1OfzoM="));
+				else if(bytes[0] == 3)
+					cipher=new AesCipher(Convert.FromBase64String("ehp4PuJycxdegB3o4sFAUTDkv+u6Ryipktu0aO/N9mQ="),
+							Convert.FromBase64String("XHHAHaiFTgUM5Lx7rFORDg=="));
+				else if(bytes[0] == 4)
+					cipher=new RC2Cipher(Convert.FromBase64String("SN+Iykxsu6Ya88lpC+2MSA=="),
+							Convert.FromBase64String("18madZ7cT7U="));
 				if(bytes[0] == 0) // сделай rsa тут
-					message = Encoding.Unicode.GetString(bytes, 1, bytes.Length);
-				else if(bytes[0] == 1)
+					message = Encoding.Unicode.GetString(bytes, 1, bytes.Length-1);
+				else
 				{
-					Cipher cipher = new DESCipher(Convert.FromBase64String("YCjdx4YFSJ8="), Convert.FromBase64String("qQYwcSmXwjY="));
 					byte[] message_bytes = new byte[bytes.Length-1];
 					Array.Copy(bytes, 1, message_bytes, 0, bytes.Length-1);
 					message_bytes = cipher.Decrypt(message_bytes);
@@ -73,11 +84,31 @@ namespace laba4Server
 					return;
 				rtb.SelectionColor = Color.Gray;
 				rtb.AppendText("["+DateTime.Now.ToString("dd.MM.yyyy HH:mm")+"] ");
-				rtb.SelectionColor = Color.DarkGreen;
 				if(bytes[0] == 0)
+				{
+					rtb.SelectionColor = Color.DarkGreen;
 					rtb.AppendText("[none] ");
+				}
 				else if(bytes[0] == 1)
+				{
+					rtb.SelectionColor = Color.DarkGoldenrod;
 					rtb.AppendText("[des] ");
+				}
+				else if(bytes[0] == 2)
+				{
+					rtb.SelectionColor = Color.DarkMagenta;
+					rtb.AppendText("[tripledes] ");
+				}
+				else if(bytes[0] == 3)
+				{
+					rtb.SelectionColor = Color.DarkSalmon;
+					rtb.AppendText("[aes] ");
+				}
+				else if(bytes[0] == 4)
+				{
+					rtb.SelectionColor = Color.DarkTurquoise;
+					rtb.AppendText("[rc2] ");
+				}
 				rtb.SelectionColor = rtb.ForeColor;
 				rtb.AppendText(message);
 				rtb.AppendText(Environment.NewLine);
